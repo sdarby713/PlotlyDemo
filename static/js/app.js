@@ -16,15 +16,19 @@ function buildMetadata(sample) {
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
 
+    var WFREQ = "0";
     for (let [key, value] of Object.entries(sampleMetadata)) {
       var keyValue = `${key}: ${value}`;
       console.log(`<> ${keyValue} <>`);
       datum = selector.append("p");
       datum.text(keyValue);
+      if (key === "WFREQ") {
+        WFREQ = value;
+        };
       };
 
     // BONUS: Build the Gauge Chart
-    // buildGauge(data.WFREQ);
+    buildGauge(WFREQ);
   });
 }
 
